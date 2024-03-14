@@ -1,12 +1,11 @@
-
+import React from "react"
 import './App.css'
+import TabApp from "./components/Ant-Design-tab-creator/Tabs"
 
 function App() {
   return (
     <div>
-      <Header />
-      <Ant-Design-tab-creator />
-      <Footer/>
+      <TabApp />
     </div>
   )
 }
