@@ -1,13 +1,13 @@
 
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import HeaderTest from './components/Header/HeaderTest'
+import Header from './components/Header/Header'
 
 function App() {
-  return (
-    <div>
-      <Header />
-      <Ant-Design-tab-creator />
-      <Footer/>
-    </div>
+  return (<>
+   <Header/>
+   </>
   )
 }
 
