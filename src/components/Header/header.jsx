@@ -1,5 +1,14 @@
-//Logo to the left
+import React from 'react'
+import Navigation from './Navigation'
+import HeroComponent from './HeroComponent'
 
-//Title in the middle
+const Header = () => {
+  return (
+    <section id='header' className='header'>
+        <Navigation />
+        <HeroComponent />
+    </section>
+  )
+}
 
-//Chart link to the right
+export default Header
