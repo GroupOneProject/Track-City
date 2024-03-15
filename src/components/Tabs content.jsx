@@ -42,7 +42,7 @@ const DynamicTable = () => {
   const handleCheckboxChange = (e, index) => {
     const updatedTasks = [...tasks];
     updatedTasks[index].completed = e.target.checked;
-   
+    
     if (e.target.checked) {
       updatedTasks[index].points = 100;
     } else {
@@ -82,10 +82,11 @@ const DynamicTable = () => {
       return `${hours}h ${minutes}m`;
     }
     return 'N/A'; 
+  };
 
   const getColorIndicator = (task) => {
     const remainingTime = calculateTimeRemaining(task);
-    const timeThresholds = [2 * 60 * 60 * 1000, 6 * 60 * 60 * 1000]; // 2 hours, 6 hours
+    const timeThresholds = [2 * 60 * 60 * 1000, 6 * 60 * 60 * 1000]; 
     if (remainingTime === 'N/A') {
       return green[500];
     } else if (remainingTime.includes('h')) {
@@ -190,4 +191,5 @@ const DynamicTable = () => {
 };
 
 export default DynamicTable;
+
 
