@@ -1,5 +1,33 @@
-//Logo to the left
+import React from 'react';
+import { Link } from 'react-router-dom'; 
+import logo from '/imgs/Designer.png';
+import './Header.css';
 
-//Title in the middle
+const Header = () => {
+  return (
+    <header className='header'>
+      <div className="header-container">
+        <div className="logo">
+          <Link to="/"><img src={logo} alt="Logo" /></Link>
+        </div>
+        <div className="site-title">
+          <h1>Track City</h1>
+        </div>
+        <div className="nav-container">
+        <nav className="navbar navbar-expand-lg navbar-light">
+          <ul>
+            <li>
+              <Link to="/home">Home</Link> 
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      </div>
+    </header>
+  );
+}
 
-//Chart link to the right
+export default Header;

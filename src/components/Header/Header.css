@@ -1,3 +1,27 @@
 .header {
     background-color: #89CFF0;
 }
+.header-container {
+    max-width: 1000px;
+    max-height: 200px;
+    padding: 10px 0;
+    margin: 0 auto;
+    position: relative;
+}
+header .logo img {
+    max-width: 130px;
+}
+.nav-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.navbar ul li {
+    list-style-type: none;
+    display: inline-block;
+    margin: 0 10px;
+}
+.navbar ul li a{
+    color: #111;
+    text-decoration: none;
+}
