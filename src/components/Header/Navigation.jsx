@@ -1,5 +1,6 @@
 import React from "react";
 import './Navigation.css'
+import Designer from '../../assets/Designer.png'
 
 const Navigation = () => {
   return (
@@ -7,7 +8,7 @@ const Navigation = () => {
       <div className="container-fluid justify-content-between">
         
         <a className="navbar-brand mx-auto" href="#">
-          <img src="/src/assets/Designer.png" alt="Logo" width="90" height="90" />
+          <img src={Designer} alt="Logo" width="90" height="90" />
 
         </a>
 
