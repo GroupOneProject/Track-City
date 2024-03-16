@@ -1,0 +1,15 @@
+.pdf {
+    max-width: 30vw;
+    font-size: 1rem;
+    border: 5px double blueviolet;
+    padding: 10px;
+    
+}
+
+.pdf-text {
+    font-size: 0.5rem;
+}
+
+p {
+    font-weight: bolder;
+}
