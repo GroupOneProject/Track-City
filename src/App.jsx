@@ -1,6 +1,6 @@
 import React from "react"
 import './App.css'
-
+import DownloadTasks from "./components/WritetoPDF/UserObject";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Header from './components/Header/Header'
@@ -11,6 +11,7 @@ function App() {
     <div>
       <Header/>
       <TabApp />
+      <DownloadTasks />
     </div>
 
   )
