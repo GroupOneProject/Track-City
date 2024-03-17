@@ -2,6 +2,7 @@ import React from 'react'
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import './UserObject.css'
+import Designer from '../../assets/Designer.png'
 
 // these values are hard coded for the time being, but will eventually pull from variables, populated via user input.
 const userInput = [
@@ -45,6 +46,7 @@ function DownloadTasks() {
     const selectedName = 'Toussaint'
     const tasks =  [userInput[0], userInput[1], userInput[2]]; 
     const tasksHtml = tasks.map((task, index) => `<div>
+    <img src=${Designer} class='pdf-logo' width='50' height='50'>
     <h4>${selectedName}, here are your pending tasks!</h4>
     <p>${index + 1}. ${task.Title}
     <p class='pdf-text'>${task.Description}</p>
