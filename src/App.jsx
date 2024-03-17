@@ -10,7 +10,7 @@ function App() {
   return (
     <div>
       <Header/>
-      <TabApp />
+      <div className='tabs'><TabApp /></div>
       <DownloadTasks />
     </div>
 

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Tabs } from 'antd';
 import { Input } from 'antd';
+import './Tabs.css'
 
 const EditableInput = ({ value, onChange }) => {
   const [isEditing, setIsEditing] = useState(false);
