@@ -2,7 +2,7 @@ import React from 'react'
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
 import './UserObject.css'
-import Designer from '../../assets/Designer.png'
+import Designer from '/imgs/Designer.png'
 
 // these values are hard coded for the time being, but will eventually pull from variables, populated via user input.
 const userInput = [

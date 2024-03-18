@@ -7,6 +7,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import Header from "./components/Header/Header";
 import HeroComponent from "./components/Header/HeroComponent";
 import TabApp from "./components/Ant-Design-tab-creator/Tabs";
+import DownloadTasks from "./components/WritetoPDF/UserObject";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Header />
         <HeroComponent></HeroComponent>
         <TabApp />
+        <DownloadTasks> </DownloadTasks>
       </div>
     </Router>
   );
