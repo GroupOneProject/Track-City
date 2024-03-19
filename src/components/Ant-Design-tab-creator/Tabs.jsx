@@ -1,105 +1,90 @@
-import React, { useRef, useState } from 'react';
-import { Tabs } from 'antd';
-import { Input } from 'antd';
+import React, { useState } from 'react';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+import EditableInput from './EditTabs';
 
-const EditableInput = ({ value, onChange }) => {
-  const [isEditing, setIsEditing] = useState(false);
-  const [inputValue, setInputValue] = useState(value);
 
-  const handleBlur = () => {
-    onChange(inputValue);
-    setIsEditing(false);
-  };
 
-  return isEditing ? (
-    <Input
-      autoFocus
-      defaultValue={inputValue}
-      onBlur={handleBlur}
-      onChange={(e) => setInputValue(e.target.value)}
-      onPressEnter={handleBlur}
-    />
-  ) : (
-    <div onDoubleClick={() => setIsEditing(true)}>{value}</div>
-  );
+const addButtonStyle = {
+  background: "#007bff",
+  color: "white",
+  border: "none",
+  padding: "5px 10px",
+  borderRadius: "5px",
+  cursor: "pointer",
+  marginLeft: "15px",
 };
 
-const initialItems = [
-  {
-    label: 'Tab 1',
-    children: 'Content of Tab 1',
-    key: '1',
-  }
-];
+const deleteButtonStyle = {
+  background: "gray",
+  color: "white",
+  border: "none",
+  borderRadius: "50%",
+  cursor: "pointer",
+  marginLeft: "5px",
+  width: "20px",
+  height: "20px",
+  display: "inline-block",
+  textAlign: "center",
+  lineHeight: "18px",
+  fontSize: "12px",
+};
 
 const TabApp = () => {
-  const [items, setItems] = useState(initialItems.map(item => ({
-    ...item,
-    label: (
-      <EditableInput
-        value={item.label}
-        onChange={(newLabel) => {
-          const newItems = items.map(i =>
-            i.key === item.key ? { ...i, label: newLabel } : i
-          );
-          setItems(newItems);
-        }}
-      />
-    ),
-    children: item.children,
-  })));
+  const [tabs, setTabs] = useState([
+    { title: 'Tab 1', content: 'Content of Tab 1' },
+  ]);
+  const [tabIndex, setTabIndex] = useState(0);
 
-  const [activeKey, setActiveKey] = useState(initialItems[0].key);
-  const newTabIndex = useRef(0);
-  const onChange = (newActiveKey) => {
-    setActiveKey(newActiveKey);
-  };
-  const add = () => {
-    const newActiveKey = `newTab${newTabIndex.current++}`;
-    const newPanes = [...items];
-    newPanes.push({
-      label: 'New Tab',
-      children: 'Content of new Tab',
-      key: newActiveKey,
-    });
-    setItems(newPanes);
-    setActiveKey(newActiveKey);
+  const addNewTab = () => {
+    const newTabIndex = tabs.length;
+    setTabs([...tabs, { title: `New Tab ${newTabIndex + 1}`, content: `Content of New Tab ${newTabIndex + 1}` }]);
+    setTabIndex(newTabIndex);
   };
 
-  const remove = (targetKey) => {
-    let newActiveKey = activeKey;
-    let lastIndex = -1;
-    items.forEach((item, i) => {
-      if (item.key === targetKey) {
-        lastIndex = i - 1;
+  const removeTab = (index) => {
+    const newTabs = tabs.filter((_, i) => i !== index);
+    setTabs(newTabs);
+   
+    if (tabIndex >= newTabs.length) {
+      setTabIndex(newTabs.length - 1);
+    }
+  };
+
+  const updateTabTitle = (index, newTitle) => {
+    const newTabs = tabs.map((tab, i) => {
+      if (i === index) {
+        return { ...tab, title: newTitle };
       }
+      return tab;
     });
-    const newPanes = items.filter((item) => item.key !== targetKey);
-    if (newPanes.length && newActiveKey === targetKey) {
-      if (lastIndex >= 0) {
-        newActiveKey = newPanes[lastIndex].key;
-      } else {
-        newActiveKey = newPanes[0].key;
-      }
-    }
-    setItems(newPanes);
-    setActiveKey(newActiveKey);
+    setTabs(newTabs);
   };
-  const onEdit = (targetKey, action) => {
-    if (action === 'add') {
-      add();
-    } else {
-      remove(targetKey);
-    }
-  };
+
   return (
-    <Tabs
-      type="editable-card"
-      onChange={onChange}
-      activeKey={activeKey}
-      onEdit={onEdit}
-      items={items}
-    />
+    <div>
+      <Tabs selectedIndex={tabIndex} onSelect={index => setTabIndex(index)}>
+        <TabList>
+          {tabs.map((tab, index) => (
+            <Tab key={index}>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <EditableInput
+                  initialValue={tab.title}
+                  onSave={(newTitle) => updateTabTitle(index, newTitle)}
+                />
+                <button onClick={() => removeTab(index)} style={deleteButtonStyle}>×</button>
+              </div>
+            </Tab>
+          ))}
+        </TabList>
+        {tabs.map((tab, index) => (
+          <TabPanel key={index}>{tab.content}</TabPanel>
+        ))}
+      </Tabs>
+      <button onClick={addNewTab} style={addButtonStyle}>Add Tab</button>
+    </div>
   );
 };
+
+
 export default TabApp;
