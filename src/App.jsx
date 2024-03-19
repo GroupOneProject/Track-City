@@ -8,7 +8,7 @@ import Header from "./components/Header/Header";
 import HeroComponent from "./components/Header/HeroComponent";
 import TabApp from "./components/Ant-Design-tab-creator/Tabs";
 import DownloadTasks from "./components/WritetoPDF/UserObject";
-import DynamicTable from "./components/DynamicTable";
+import DynamicTable from "./components/TabsContent";
 
 function App() {
   const [selectedTab, setSelectedTab] = useState("");
