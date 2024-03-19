@@ -16,7 +16,7 @@ function App() {
       <div>
         <Header />
         <HeroComponent></HeroComponent>
-        <TabApp />
+        <div className='tabs'><TabApp /></div>
         <DownloadTasks> </DownloadTasks>
       </div>
     </Router>

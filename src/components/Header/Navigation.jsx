@@ -8,7 +8,7 @@ const Navigation = () => {
       <div className="container-fluid justify-content-between">
         
         <a className="navbar-brand mx-auto" href="#">
-          <img src={Designer} alt="Logo" width="90" height="90" />
+          <img src={Designer} alt="Logo" width="60" height="60" />
 
         </a>
 
