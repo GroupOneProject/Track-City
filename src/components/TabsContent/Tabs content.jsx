@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Table, TableHead, TableBody, TableCell, TableRow, TextField, Checkbox, Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 import { red, amber, green } from '@mui/material/colors';
+import PropTypes from 'prop-types';
 
-const DynamicTable = () => {
+const DynamicTable = ({ storageKey }) => {
   const [tasks, setTasks] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
 
   
   useEffect(() => {
-    const savedTasks = JSON.parse(localStorage.getItem('tasks'));
+    const savedTasks = JSON.parse(localStorage.getItem(storageKey));
     if (savedTasks) {
       setTasks(savedTasks);
     }
-  }, []);
+  }, [storageKey]);
 
   
   useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }, [tasks]);
+    localStorage.setItem(storageKey, JSON.stringify(tasks));
+  }, [tasks, storageKey]);
 
   const addTask = () => {
     const newTask = {
@@ -188,6 +189,10 @@ const DynamicTable = () => {
       </Dialog>
     </div>
   );
+};
+
+DynamicTable.propTypes = {
+  storageKey: PropTypes.string.isRequired,
 };
 
 export default DynamicTable;

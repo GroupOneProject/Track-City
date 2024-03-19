@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import EditableInput from './EditTabs';
+import DynamicTable from '../TabsContent/Tabs content';
 
 
 const addButtonStyle = {
@@ -31,14 +32,18 @@ const deleteButtonStyle = {
 
 const TabApp = () => {
   const [tabs, setTabs] = useState([
-    { title: 'Tab 1', content: 'Content of Tab 1' },
+    { title: 'Tab 1', content: <DynamicTable storageKey="dynamicTable_1" /> },
   ]);
   const [tabIndex, setTabIndex] = useState(0);
 
   const addNewTab = () => {
-    const newTabIndex = tabs.length;
-    setTabs([...tabs, { title: `New Tab ${newTabIndex + 1}`, content: `Content of New Tab ${newTabIndex + 1}` }]);
-    setTabIndex(newTabIndex);
+    const newTabId = tabs.length + 1;
+    const newTab = {
+      title: `New Tab ${newTabId}`,
+      content: <DynamicTable storageKey={`dynamicTable_${newTabId}`} />,
+    };
+    setTabs([...tabs, newTab]);
+    setTabIndex(tabs.length);
   };
 
   const removeTab = (index) => {
@@ -63,28 +68,28 @@ const TabApp = () => {
   return (
     <div>
       <Tabs selectedIndex={tabIndex} onSelect={index => setTabIndex(index)}>
-      <TabList>
+        <TabList>
           {tabs.map((tab, index) => (
             <Tab key={index}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <EditableInput
-                initialValue={tab.title}
-                onSave={(newTitle) => updateTabTitle(index, newTitle)}
-              />
-              
-              <button onClick={() => removeTab(index)} style={deleteButtonStyle}>×</button>
-            </div>
-          </Tab>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <EditableInput
+                  initialValue={tab.title}
+                  onSave={(newTitle) => updateTabTitle(index, newTitle)}
+                />
+                <button onClick={() => removeTab(index)} style={deleteButtonStyle}>×</button>
+              </div>
+            </Tab>
           ))}
+          <button onClick={addNewTab} style={addButtonStyle}>Add Tab</button>
         </TabList>
-        <button onClick={addNewTab} style={addButtonStyle}>Add Tab</button>
         {tabs.map((tab, index) => (
-          <TabPanel key={index}>{tab.content}</TabPanel>
+          <TabPanel key={index}>
+            {tab.content}
+          </TabPanel>
         ))}
       </Tabs>
     </div>
   );
 };
-
 
 export default TabApp;
