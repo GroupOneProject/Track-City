@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import './UserObject.css'
 import Designer from '../../assets/Designer.png'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 // these values are hard coded for the time being, but will eventually pull from variables, populated via user input.
 const userInput = [
     {
         Title: 'Vaccuum the Stairs',
         Description: 'You need to make sure that the stairs are vaccuumed and shake and vacced for freshness!',
-        Duedate: '',
+        Duedate: 'Friday, 15th March',
         Points: 10,
         Completed: false
     },
@@ -42,47 +44,63 @@ const userInput = [
 
 
 function DownloadTasks() {
+    const userArray = ['Aimee', 'Marcus', 'Tonya'];
+    const [selectedName, setSelectedName] = useState(userArray[0]); 
+
     const downloadPdfDocument = () => {
-    const selectedName = 'Toussaint'
-    const tasks =  [userInput[0], userInput[1], userInput[2]]; 
-    const tasksHtml = tasks.map((task, index) => `<div>
-    <img src=${Designer} class='pdf-logo' width='50' height='50'>
-    <h4>${selectedName}, here are your pending tasks!</h4>
-    <p>${index + 1}. ${task.Title}
-    <p class='pdf-text'>${task.Description}</p>
-    <p class='pdf-text'>This is due on ${task.Duedate}</p>
-    <p class='pdf-text'>There are ${task.Points} points available!</p>
-    </div>`).join('');
+        const tasks = [userInput[0], userInput[1], userInput[2]]; 
 
-    const element = document.createElement('div');
-    element.classList.add('pdf');
-    element.innerHTML = tasksHtml;
-    document.body.appendChild(element); // Temporarily add to the document
+        const tasksHtml = tasks.map((task, index) => `<div>
+        <p>${index + 1}. ${task.Title}
+        <p class='pdf-text'>${task.Description}<br/>
+        This is due on ${task.Duedate}<br/>
+        There are ${task.Points} points available!</p>
+        </div>`).join('');
 
-    html2canvas(element).then(canvas => {
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF();
-      pdf.addImage(imgData, 'PNG', 10, 10);
-      pdf.save("tasks.pdf");
+        const containerHTML = `<img src=${Designer} class='pdf-logo' width='100' height='100'>
+        <h4 class='pdf-title'>${selectedName}, here are your tasks for the week. Thank you very much for all of the help.</h4><hr>`;
 
-      document.body.removeChild(element); // Clean up
-    });
-  };
+        const element = document.createElement('div');
+        element.innerHTML = tasksHtml;
 
-  return (
-    <button onClick={downloadPdfDocument}>Download Tasks as PDF</button>
-  );
+        const pdfContainer = document.createElement('div');
+        pdfContainer.classList.add('pdf');
+        pdfContainer.innerHTML = containerHTML;
+        pdfContainer.appendChild(element);
+        document.body.appendChild(pdfContainer); 
+
+        html2canvas(pdfContainer).then(canvas => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF();
+            pdf.addImage(imgData, 'PNG', 10, 10);
+            pdf.save(`${selectedName} tasks.pdf`);
+            document.body.removeChild(pdfContainer); 
+        });
+    };
+
+    const handleDropdownClick = (name) => {
+        setSelectedName(name); 
+    };
+
+    return (
+
+        <section className='pdf-download-section'>
+        <h5>You can download anyone's schedule and send it around to make sure they stay on track! Select a user from the dropdown below and click <strong>Download PDF</strong> to get a personalised schedule.</h5>
+        <div className="dropdown">
+            <button className="btn btn-info dropdown-toggle dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {selectedName}
+            </button>
+            <ul className="dropdown-menu">
+                {userArray.map((user, index) => (
+                    <li key={index} onClick={() => handleDropdownClick(user)}>
+                        <a className="dropdown-item" href="#">{user}</a>
+                    </li>
+                ))}
+            </ul>
+            <button onClick={downloadPdfDocument} className="btn btn-secondary">Download PDF</button>
+        </div>
+        </section>
+    );
 }
 
 export default DownloadTasks;
-
-
-
-// const UserObject = () => {
-//   return (
-//     <div>UserObject</div>
-//   )
-// }
-
-// export default UserObject
-

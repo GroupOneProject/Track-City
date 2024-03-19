@@ -1,6 +1,6 @@
 import React from "react";
 import './Navigation.css'
-import Designer from '../../assets/Designer.png'
+import Designer from '../../assets/Track-city-logo.png'
 
 const Navigation = () => {
   return (
