@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import './UserObject.css'
-import Designer from '../../../public/Designer-1.png'
+// import Designer from '../../../public/Designer-1.png'
+import Designer from '/src/assets/Designer-1.png'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
