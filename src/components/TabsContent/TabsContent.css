@@ -1,0 +1,26 @@
+@media only screen and (max-width: 600px) {
+    .MuiTableCell-head,
+    .MuiTableCell-body {
+      display: block;
+      width: 100%;
+    }
+    
+    .MuiTableRow {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+    }
+    
+    .MuiTableCell {
+      padding: 8px 0;
+      text-align: left;
+    }
+  
+    .MuiTableCell-head {
+      display: none;
+    }
+  
+    .MuiTableCell-body {
+      border-bottom: 1px solid #ddd;
+    }
+  }
