@@ -4,7 +4,6 @@ import 'react-tabs/style/react-tabs.css';
 import EditableInput from './EditTabs';
 
 
-
 const addButtonStyle = {
   background: "#007bff",
   color: "white",
@@ -43,9 +42,9 @@ const TabApp = () => {
   };
 
   const removeTab = (index) => {
+   
     const newTabs = tabs.filter((_, i) => i !== index);
     setTabs(newTabs);
-   
     if (tabIndex >= newTabs.length) {
       setTabIndex(newTabs.length - 1);
     }
@@ -64,24 +63,25 @@ const TabApp = () => {
   return (
     <div>
       <Tabs selectedIndex={tabIndex} onSelect={index => setTabIndex(index)}>
-        <TabList>
+      <TabList>
           {tabs.map((tab, index) => (
             <Tab key={index}>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <EditableInput
-                  initialValue={tab.title}
-                  onSave={(newTitle) => updateTabTitle(index, newTitle)}
-                />
-                <button onClick={() => removeTab(index)} style={deleteButtonStyle}>×</button>
-              </div>
-            </Tab>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <EditableInput
+                initialValue={tab.title}
+                onSave={(newTitle) => updateTabTitle(index, newTitle)}
+              />
+              
+              <button onClick={() => removeTab(index)} style={deleteButtonStyle}>×</button>
+            </div>
+          </Tab>
           ))}
         </TabList>
+        <button onClick={addNewTab} style={addButtonStyle}>Add Tab</button>
         {tabs.map((tab, index) => (
           <TabPanel key={index}>{tab.content}</TabPanel>
         ))}
       </Tabs>
-      <button onClick={addNewTab} style={addButtonStyle}>Add Tab</button>
     </div>
   );
 };

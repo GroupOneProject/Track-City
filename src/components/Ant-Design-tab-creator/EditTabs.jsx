@@ -5,6 +5,12 @@ const EditableInput = ({ initialValue, onSave }) => {
   const [value, setValue] = useState(initialValue);
   const inputRef = useRef(null);
 
+
+  useEffect(() => {
+    setValue(initialValue);
+  }, [initialValue]);
+
+  
   useEffect(() => {
     if (isEditing) {
       inputRef.current.focus();
@@ -31,12 +37,14 @@ const EditableInput = ({ initialValue, onSave }) => {
       onChange={(e) => setValue(e.target.value)}
       onBlur={handleBlur}
       onKeyDown={handleKeyPress}
+      autoFocus
     />
   ) : (
-    <div onDoubleClick={() => setIsEditing(true)} style={{ cursor: 'pointer' }}>
-      {value}
+    <div onDoubleClick={() => setIsEditing(true)} style={{ cursor: 'pointer', minWidth: '20px', minHeight: '20px', display: 'inline-block' }}>
+      {value || 'Edit'}
     </div>
   );
 };
 
 export default EditableInput;
+
