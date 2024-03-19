@@ -1,20 +1,51 @@
-.pdf {
-    max-width: 30vw;
-    font-size: 1rem;
-    border: 5px double blueviolet;
-    padding: 10px;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
 
+.pdf {
+    max-width: 725px;
+    height: 100%;
+    font-size: 1rem;
+    border: 4px double #89CFF0;
+    padding: 10px;
     
 }
 
 .pdf-text {
-    font-size: 0.5rem;
+    font-size: 1rem;
+    font-weight: 200;
+ 
 }
+
 
 .pdf-logo {
     margin: 0 auto;
+    display: block;
 }
+
+.pdf-title {
+    font-weight: 100;
+    font-size: 1rem;
+    color: #89CFF0;
+}
+
+.pdf-download-section {
+max-width: 60vw;
+margin: 15px auto;
+}
+
+.dropdown {
+    margin: 10px;
+}
+
 
 p {
     font-weight: bolder;
+    font-size: 1rem;
+}
+
+h4 {
+    font-size: 2rem;
 }

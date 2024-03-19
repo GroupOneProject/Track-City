@@ -1,14 +1,32 @@
 #root {
+  max-width: 1280px;
+  margin: 0 auto;
   padding: 0rem;
   text-align: center;
+  background-color: #89CFF0;
+  min-height: 100vh;
+}
+
+.tabs {
+  max-width: 80vw;
+  margin: auto;
+  border: 5px white;
+  min-height: 50vh;
+  background-color: #F0FFFF;
 }
 
 .logo {
- 
+  height: 6em;
+  padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
-
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
 
 @keyframes logo-spin {
   from {
@@ -24,10 +42,7 @@
     animation: logo-spin infinite 20s linear;
   }
 }
-.ant-tabs {
-  max-width: 1280px;
-  margin: auto;
-}
+
 .card {
   padding: 2em;
 }
