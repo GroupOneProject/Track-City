@@ -44,6 +44,8 @@ const TabApp = () => {
     };
     setTabs([...tabs, newTab]);
     setTabIndex(tabs.length);
+    // setTabIndex(newTabId - 1); 
+    // Replace the "setTabIndex(tabs.length);" with the commented code. 
   };
 
   const removeTab = (index) => {
