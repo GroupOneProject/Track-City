@@ -22,7 +22,11 @@ header .logo img {
 .nav-container {
     display: flex;
     justify-content: space-between;
-    width:auto
+    width:auto;
+    align-items: flex-end;
+}
+.navbar ul {
+    padding: 0;
 }
 
 .navbar ul li {
@@ -38,4 +42,5 @@ header .logo img {
 
 .logo h1{
     font-size: 50px;
+    margin-bottom: 0;
 }
