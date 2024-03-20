@@ -17,13 +17,10 @@ const Header = () => {
         <nav className="navbar navbar-expand-lg navbar-light">
           <ul>
             <li>
-              <Link to="/home">Home</Link> 
+              <Link to="/how-to-use">How to Use</Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-            <li>
-              <Link to="/aboutus">About us</Link>
+              <Link to="/charts">Charts</Link>
             </li>
           </ul>
         </nav>
