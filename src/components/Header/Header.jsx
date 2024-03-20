@@ -13,7 +13,7 @@ const Header = () => {
           <nav className="navbar">
             <ul>
               <li>
-                <Button variant="info" as={Link} to="/how-to-use">
+                <Button className="header-button" variant="info" as={Link} to="/how-to-use">
                  <FaInfoCircle /> How to Use
                 </Button>
               </li>
@@ -22,13 +22,13 @@ const Header = () => {
           <div className="logo">
             <Link to="/"><img src={logo} alt="Logo" width="70"/></Link>
             <div className="site-title">
-              <h1>Track City</h1>
+              <h1><span>Track City</span></h1>
             </div>
           </div>
           <nav className="navbar">
             <ul>
               <li>
-                <Button variant="warning" as={Link} to="/charts">
+                <Button className="header-button" variant="info" as={Link} to="/charts">
                  <FaChartBar /> Charts
                 </Button>
               </li>

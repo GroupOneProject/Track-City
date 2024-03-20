@@ -1,35 +1,25 @@
 #root {
-  max-width: 1280px;
+  width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
-  padding: 0rem;
+  padding: 0;
   text-align: center;
-  background-color: #89CFF0;
+  background-color: #b1beee;
   min-height: 100vh;
 }
 
+
 .tabs {
-  max-width: 80vw;
+  max-width: 70vw;
   margin: auto;
   border: 5px white;
   min-height: 50vh;
   background-color: #F0FFFF;
 }
 
-.logo {
-  /* height: 6em; */
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
 
 .react-tabs__tab-list {
-  background-color: #89CFF0;
+  background-color: #D9D9D9;
 }
 
 .react-tabs__tab--selected {
