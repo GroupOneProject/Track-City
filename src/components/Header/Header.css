@@ -1,27 +1,36 @@
 .header {
     background-color: #89CFF0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
 .header-container {
     max-width: 1000px;
     max-height: 200px;
     padding: 10px 0;
     margin: 0 auto;
-    position: relative;
-
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
 header .logo img {
     max-width: 130px;
 }
+
 .nav-container {
-    position: absolute;
-    bottom: 0;
-    right: 0;
+    display: flex;
+    justify-content: space-between;
+    width:auto
 }
+
 .navbar ul li {
     list-style-type: none;
     display: inline-block;
     margin: 0 10px;
 }
+
 .navbar ul li a{
     color: #111;
     text-decoration: none;
