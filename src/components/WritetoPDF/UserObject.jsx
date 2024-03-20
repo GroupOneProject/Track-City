@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import './UserObject.css'
@@ -45,8 +45,18 @@ const userInput = [
 
 
 function DownloadTasks() {
-    const userArray = ['Aimee', 'Marcus', 'Tonya'];
-    const [selectedName, setSelectedName] = useState(userArray[0]); 
+  const [userArray, setUserArray] = useState([]);
+  const [selectedName, setSelectedName] = useState('');
+
+  useEffect(() => {
+      
+      const savedTabs = JSON.parse(localStorage.getItem('TabTitles'));
+      if (savedTabs && savedTabs.length > 0) {
+          const tabTitles = savedTabs.map(tab => tab.title);
+          setUserArray(tabTitles);
+          setSelectedName(tabTitles[0]); 
+      }
+  }, []); 
 
     const downloadPdfDocument = () => {
         const tasks = [userInput[0], userInput[1], userInput[2]]; 
