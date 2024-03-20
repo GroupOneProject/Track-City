@@ -105,7 +105,7 @@ const DynamicTable = ({ storageKey }) => {
   };
 
   return (
-    <div>
+    <div style={{ overflowX: 'auto' }}>
       <Button variant="contained" onClick={addTask}>Add Task</Button>
       <Table>
         <TableHead>
@@ -113,7 +113,6 @@ const DynamicTable = ({ storageKey }) => {
             <TableCell>Task Name</TableCell>
             <TableCell>Task Description</TableCell>
             <TableCell>Completed</TableCell>
-            <TableCell>Start Date</TableCell>
             <TableCell>End Date</TableCell>
             <TableCell>Remaining Time</TableCell>
             <TableCell>Points</TableCell>
