@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Table, TableHead, TableBody, TableCell, TableRow, TextField, Checkbox, Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+import { Table, TableHead, TableBody, TableCell, TableRow, TextField, Checkbox, Button, Dialog, DialogTitle, DialogContent, DialogActions, IconButton } from '@mui/material';
 import { red, amber, green } from '@mui/material/colors';
 import PropTypes from 'prop-types';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const DynamicTable = ({ storageKey }) => {
   const [tasks, setTasks] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
 
-  
   useEffect(() => {
     const savedTasks = JSON.parse(localStorage.getItem(storageKey));
     if (savedTasks) {
@@ -16,7 +16,6 @@ const DynamicTable = ({ storageKey }) => {
     }
   }, [storageKey]);
 
-  
   useEffect(() => {
     localStorage.setItem(storageKey, JSON.stringify(tasks));
   }, [tasks, storageKey]);
@@ -75,7 +74,6 @@ const DynamicTable = ({ storageKey }) => {
     if (!task.completed && task.endDate) {
       const timeDifference = task.endDate - task.startDate;
       const remainingTime = Math.max(0, timeDifference - (Date.now() - task.startDate));
-
       
       const hours = Math.floor(remainingTime / (1000 * 60 * 60));
       const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
@@ -113,7 +111,6 @@ const DynamicTable = ({ storageKey }) => {
             <TableCell>Task Name</TableCell>
             <TableCell>Task Description</TableCell>
             <TableCell>Completed</TableCell>
-            <TableCell>Start Date</TableCell>
             <TableCell>End Date</TableCell>
             <TableCell>Remaining Time</TableCell>
             <TableCell>Points</TableCell>
@@ -142,7 +139,6 @@ const DynamicTable = ({ storageKey }) => {
                   onChange={(e) => handleCheckboxChange(e, index)}
                 />
               </TableCell>
-              <TableCell>{task.startDate.toLocaleString()}</TableCell>
               <TableCell>
                 <TextField
                   type="datetime-local"
@@ -160,7 +156,9 @@ const DynamicTable = ({ storageKey }) => {
                 <Button variant="outlined" onClick={() => handleEditTask(index)}>Edit</Button>
               </TableCell>
               <TableCell>
-                <Button variant="outlined" onClick={() => handleDeleteTask(index)}>Delete</Button>
+                <IconButton onClick={() => handleDeleteTask(index)}>
+                  <DeleteIcon />
+                </IconButton>
               </TableCell>
             </TableRow>
           ))}
@@ -196,5 +194,6 @@ DynamicTable.propTypes = {
 };
 
 export default DynamicTable;
+
 
 
