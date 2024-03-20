@@ -6,7 +6,7 @@ import DynamicTable from '../TabsContent/Tabs content';
 
 
 const addButtonStyle = {
-  background: "#89CFF0",
+  background: "#5bc0de",
   color: "white",
   border: "none",
   padding: "5px 10px",
