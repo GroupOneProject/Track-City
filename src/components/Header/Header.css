@@ -35,3 +35,7 @@ header .logo img {
     color: #111;
     text-decoration: none;
 }
+
+.logo h1{
+    font-size: 50px;
+}

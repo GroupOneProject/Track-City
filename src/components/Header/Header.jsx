@@ -17,6 +17,9 @@ const Header = () => {
           </nav>
           <div className="logo">
             <Link to="/"><img src={logo} alt="Logo" width="70"/></Link>
+            <div className="site-title">
+          <h1>Track City</h1>
+        </div>
           </div>
           <nav className="navbar">
             <ul>
