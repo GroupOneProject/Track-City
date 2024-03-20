@@ -1,8 +1,55 @@
-.header {
-    background-color: #89CFF0;
+.site-title {
+    background-color: #b1beee;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    opacity: 0; /* Initially hidden */
+    transform: translateX(100%); /* Initially moved to the right */
+    animation: fadeInSlideIn 2s forwards; /* Animation name, duration, and fill-mode */
+    color: #3960EE;
+}
+
+.header {
+    background-color: #b1beee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: buttonFade 3s;
+}
+
+@keyframes buttonFade{
+    0%{
+        opacity: 0;
+    }
+    30%{
+        opacity: 0.1
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.site-title span {
+    background-color: #D9D9D9;
+    padding-inline: 7vw;
+    padding-block: 1vh;
+    border-radius: 40px;
+    opacity: 0; /* Initially hidden */
+    transform: translateX(100%); /* Initially moved to the right */
+    animation: fadeInSlideIn 2s forwards; /* Animation name, duration, and fill-mode */
+    font-family: "Fredoka";
+}
+
+/* Keyframes for the combined fade-in and slide-in animation */
+@keyframes fadeInSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .header-container {
@@ -17,6 +64,7 @@
 
 header .logo img {
     max-width: 120px;
+    margin-bottom: 2vh;
 }
 
 .nav-container {
@@ -43,4 +91,15 @@ header .logo img {
 .logo h1{
     font-size: 50px;
     margin-bottom: 0;
+}
+
+Button {
+    background-color: #3960EE !important;
+    color: white !important;
+}
+
+.header-button {
+    background-color: #3960EE !important;
+    color: white !important;
+    margin-inline: 3vw;
 }

@@ -2,16 +2,45 @@
   max-width: 1280px;
   margin: auto;
   margin-bottom: 2rem;
+  font-family: "Arial", sans-serif !important;
+  animation: fadeInSlideInLeft 2s forwards;
+  transform: translateX(-100%);
 }
+
+
+
 .hero-para {
   text-align: center;
   max-width: 700px;
-  margin: 0 auto
+  margin: 0 auto;
+  font-family: "Arial", sans-serif;
+  
 }
 
 h1 {
-  font-family: "Madimi One", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 70px
+  font-size: 70px;
+  font-family: "Arial", sans-serif;
+}
+
+p {
+  color: #3960EE;
+padding-block: 1vh;
+padding-inline: 3vh;
+text-shadow: 1px 1px 3px white;
+}
+
+@keyframes fadeInSlideInLeft {
+  0% {
+      opacity: 0;
+      transform: translateX(-100%);
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
 }
