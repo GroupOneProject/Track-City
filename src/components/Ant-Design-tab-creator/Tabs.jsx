@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import EditableInput from './EditTabs';
@@ -31,10 +31,27 @@ const deleteButtonStyle = {
 };
 
 const TabApp = () => {
-  const [tabs, setTabs] = useState([
-    { title: 'Tab 1', content: <DynamicTable storageKey="dynamicTable_1" /> },
-  ]);
+  const [tabs, setTabs] = useState(() => {
+    const savedTabs = JSON.parse(localStorage.getItem('TabTitles'));
+    if (savedTabs && savedTabs.length > 0) {
+      return savedTabs.map(tab => ({
+        ...tab,
+        content: <DynamicTable storageKey={tab.storageKey} />,
+      }));
+    }
+    return [{ title: 'Tab 1', content: <DynamicTable storageKey="dynamicTable_1" /> }];
+  });
+
   const [tabIndex, setTabIndex] = useState(0);
+
+  useEffect(() => {
+    const tabsToSave = tabs.map(tab => ({
+      title: tab.title,
+      storageKey: tab.content.props.storageKey, 
+    }));
+    localStorage.setItem('TabTitles', JSON.stringify(tabsToSave));
+  }, [tabs]);
+
 
   const addNewTab = () => {
     const newTabId = tabs.length + 1;
@@ -82,7 +99,7 @@ const TabApp = () => {
               </div>
             </Tab>
           ))}
-          <button onClick={addNewTab} style={addButtonStyle}><i class="bi bi-calendar-plus"></i></button>
+          <button onClick={addNewTab} style={addButtonStyle}><i className="bi bi-calendar-plus"></i></button>
         </TabList>
         {tabs.map((tab, index) => (
           <TabPanel key={index}>
