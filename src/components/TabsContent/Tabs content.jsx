@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Table, TableHead, TableBody, TableCell, TableRow, TextField, Checkbox, Button, Dialog, DialogTitle, DialogContent, DialogActions, IconButton } from '@mui/material';
+import { Table, TableHead, TableBody, TableCell, TableRow, TextField, Checkbox, Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 import { red, amber, green } from '@mui/material/colors';
 import PropTypes from 'prop-types';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -102,6 +102,15 @@ const DynamicTable = ({ storageKey }) => {
     }
   };
 
+  const totalPointsForCompletedTasks = () => {
+    return tasks.reduce((total, task) => {
+      if (task.completed) {
+        return total + task.points;
+      }
+      return total;
+    }, 0);
+  };
+
   return (
     <div>
       <Button variant="contained" onClick={addTask}>Add Task</Button>
@@ -156,14 +165,18 @@ const DynamicTable = ({ storageKey }) => {
                 <Button variant="outlined" onClick={() => handleEditTask(index)}>Edit</Button>
               </TableCell>
               <TableCell>
-                <IconButton onClick={() => handleDeleteTask(index)}>
+                <Button variant="outlined" onClick={() => handleDeleteTask(index)}>
                   <DeleteIcon />
-                </IconButton>
+                </Button>
               </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
+
+      <div>
+        Total Points for Completed Tasks: {totalPointsForCompletedTasks()}
+      </div>
 
       {/* Edit dialog */}
       <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
