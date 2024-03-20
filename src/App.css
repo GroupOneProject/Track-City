@@ -28,6 +28,18 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.react-tabs__tab-list {
+  background-color: #89CFF0;
+}
+
+.react-tabs__tab--selected {
+  background: #F0FFFF;
+}
+
+.react-tabs__tab {
+  border: 5px gray
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -42,6 +54,8 @@
     animation: logo-spin infinite 20s linear;
   }
 }
+
+
 
 .card {
   padding: 2em;

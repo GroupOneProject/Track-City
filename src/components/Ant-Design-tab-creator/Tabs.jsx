@@ -6,7 +6,7 @@ import DynamicTable from '../TabsContent/Tabs content';
 
 
 const addButtonStyle = {
-  background: "#007bff",
+  background: "#5bc0de",
   color: "white",
   border: "none",
   padding: "5px 10px",
@@ -82,7 +82,7 @@ const TabApp = () => {
               </div>
             </Tab>
           ))}
-          <button onClick={addNewTab} style={addButtonStyle}>Add Tab</button>
+          <button onClick={addNewTab} style={addButtonStyle}><i class="bi bi-calendar-plus"></i></button>
         </TabList>
         {tabs.map((tab, index) => (
           <TabPanel key={index}>
