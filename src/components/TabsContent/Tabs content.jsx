@@ -112,7 +112,7 @@ const DynamicTable = ({ storageKey }) => {
   };
 
   return (
-    <div>
+    <div style={{ overflowX: 'auto' }}>
       <Button variant="contained" onClick={addTask}>Add Task</Button>
       <Table>
         <TableHead>
@@ -207,6 +207,4 @@ DynamicTable.propTypes = {
 };
 
 export default DynamicTable;
-
-
 
