@@ -15,18 +15,35 @@ function MultiAxisLineChart({ visible, width, height, margin }) {
     // Fetching titles from local storage
     const storedTitles = JSON.parse(localStorage.getItem("TabTitles"));
 
-    // Generating labels for the datasets based on stored titles
-    const labels = storedTitles.map(item => item.title);
+    // Initialize accumulated points for each title
+    const accumulatedPoints = {};
+
+    // Initialize labels for the days of the week
+    const labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+    // Iterate over stored titles to accumulate points for each day of the week
+    storedTitles.forEach((item, index) => {
+        accumulatedPoints[item.title] = [0, 0, 0, 0, 0, 0, 0]; // Initialize points for each day of the week
+        const pointsData = JSON.parse(localStorage.getItem(item.storageKey));
+        pointsData.forEach(data => {
+            const date = new Date(data.startDate);
+            const dayOfWeek = date.getDay(); // Get day of the week (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
+            accumulatedPoints[item.title][dayOfWeek] += data.points; // Accumulate points for the corresponding day of the week
+        });
+    });
+
+    // Create datasets for each title
+    const datasets = storedTitles.map((item, index) => ({
+        label: item.title,
+        data: accumulatedPoints[item.title],
+        fill: false,
+        borderColor: `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`,
+        yAxisID: 'y-axis-1'
+    }));
 
     const data = {
-        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-        datasets: storedTitles.map((item, index) => ({
-            label: item.title,
-            borderColor: `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`,
-            data: [30, 55, 232, 444, 378, 43, 932], // Placeholder data, you can replace it with your actual data from local storage
-            fill: true,
-            yAxisID: 'y-axis-1'
-        }))
+        labels: labels,
+        datasets: datasets
     };
 
     const options = {
@@ -36,6 +53,12 @@ function MultiAxisLineChart({ visible, width, height, margin }) {
                     id: 'y-axis-1',
                     type: 'linear',
                     position: 'left'
+                },
+                {
+                    id: 'y-axis-2',
+                    type: 'linear',
+                    position: 'right',
+                    display: false
                 }
             ]
         }
