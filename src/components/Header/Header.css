@@ -7,6 +7,7 @@
     transform: translateX(100%); /* Initially moved to the right */
     animation: fadeInSlideIn 2s forwards; /* Animation name, duration, and fill-mode */
     color: #3960EE;
+
 }
 
 .header {
@@ -16,6 +17,16 @@
     align-items: center;
     animation: buttonFade 3s;
 }
+
+@media (max-width: 675px) {
+    .site-title span {font-size: 30px !important;}
+}
+
+@media (max-width: 487px) {
+    .site-title span {font-size: 20px !important;}
+    .header-button {font-size: 10px}
+}
+
 
 @keyframes buttonFade{
     0%{
@@ -38,6 +49,7 @@
     transform: translateX(100%); /* Initially moved to the right */
     animation: fadeInSlideIn 2s forwards; /* Animation name, duration, and fill-mode */
     font-family: "Fredoka";
+    font-size: 60px;
 }
 
 /* Keyframes for the combined fade-in and slide-in animation */
