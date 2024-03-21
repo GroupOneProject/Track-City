@@ -9,11 +9,12 @@ body {
     font-size: 1rem;
     border: 5px double #b1beee;
     padding: 10px;
+    margin-left: 50px;
     
 }
 
 .pdf-text {
-    font-size: 0.5rem;
+    font-size: 1rem;
     font-weight: 200;
  
 }
@@ -42,9 +43,9 @@ margin: 15px auto;
 
 p {
     font-weight: bolder;
-    font-size: 0.8rem;
+    font-size: 1rem;
 }
 
 h4 {
-    font-size: 2rem;
+    font-size: 4rem;
 }
