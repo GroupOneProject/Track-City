@@ -1,9 +1,6 @@
 import React from 'react';
-
-import {Chart as ChartJS, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend} from "chart.js";
-
-import { Line } from "react-chartjs-2"
-
+import { Line } from "react-chartjs-2";
+import { Chart as ChartJS, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend } from "chart.js";
 
 ChartJS.register(
     LineElement,
@@ -14,7 +11,7 @@ ChartJS.register(
     Legend
 );
 
-function MultiAxisLineChart() {
+function MultiAxisLineChart({ visible, width, height, margin}) {
     const data = {
         labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
         datasets: [
@@ -43,37 +40,34 @@ function MultiAxisLineChart() {
                 yAxisID: 'y-axis-1'
             }
         ]
-    }
-    
+    };
+
     const options = {
-    scales: {
-        yAxisID: [
-            {
-                id: 'y-axis-1',
-                type: 'linear',
-                position: 'left'
-            },
-            {
-                id: 'y-axis-2',
-                type: 'linear',
-                position: 'right',
-                display: false
-            }
-        ]
-    }
-    }
-    
+        scales: {
+            yAxisID: [
+                {
+                    id: 'y-axis-1',
+                    type: 'linear',
+                    position: 'left'
+                },
+                {
+                    id: 'y-axis-2',
+                    type: 'linear',
+                    position: 'right',
+                    display: false
+                }
+            ]
+        }
+    };
+
     return (
-        <div className="Chart">
-        <div style={
-            {width: "100%", display: "none"}}>
+        <div className="Chart" style={{ display: visible ? "flex" : "none", width: width, height: height, margin: margin}}>
             <Line
-            data={data}
-            options={options}
+                data={data}
+                options={options}
             />
         </div>
-        </div>
     );
-    }
-    
-    export default MultiAxisLineChart;
+}
+
+export default MultiAxisLineChart;
