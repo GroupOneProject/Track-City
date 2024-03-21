@@ -31,11 +31,20 @@ To get started with Track City, follow these steps:
 * HTML2Canvas
 * jspdf
 
+
 ## Deployment
 
 Track City is deployed on [Netlify](https://www.netlify.com/) and can be accessed [here](https://track-city.netlify.app/).
 
 
+## Contributors
+
+* Toussaint Phillips: https://github.com/ToussaintPhillips
+* Minesh Parekh: https://github.com/minyyds
+* Chersilnt Ntervisi: https://github.com/CNtervisi
+* Antimio Casimiro: https://github.com/Antimio
+* Mike Friel: https://github.com/MichaelFriel
+ 
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
