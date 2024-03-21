@@ -117,8 +117,8 @@ const DynamicTable = ({ storageKey }) => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>Task Name</TableCell>
-            <TableCell>Task Description</TableCell>
+            <TableCell style={{ width: '200px' }}>Task Name</TableCell>
+            <TableCell style={{ width: '200px' }}>Task Description</TableCell>
             <TableCell>Completed</TableCell>
             <TableCell>End Date</TableCell>
             <TableCell>Remaining Time</TableCell>
@@ -132,12 +132,14 @@ const DynamicTable = ({ storageKey }) => {
             <TableRow key={index} style={{ backgroundColor: getColorIndicator(task) }}>
               <TableCell>
                 <TextField
+                  fullWidth
                   value={task.name}
                   onChange={(e) => handleTaskChange(e, index, 'name')}
                 />
               </TableCell>
               <TableCell>
                 <TextField
+                  fullWidth
                   value={task.description}
                   onChange={(e) => handleTaskChange(e, index, 'description')}
                 />
@@ -184,11 +186,13 @@ const DynamicTable = ({ storageKey }) => {
         <DialogContent>
           <TextField
             label="Task Name"
+            fullWidth
             value={editIndex !== null ? tasks[editIndex].name : ""}
             onChange={(e) => handleTaskChange(e, editIndex, 'name')}
           />
           <TextField
             label="Task Description"
+            fullWidth
             value={editIndex !== null ? tasks[editIndex].description : ""}
             onChange={(e) => handleTaskChange(e, editIndex, 'description')}
           />
