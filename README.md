@@ -13,7 +13,7 @@ Track City is a versatile application designed to help users track various aspec
 
 ## Screenshots
 
-![Track City Page](image.png)
+![Track City Page](src/assets/track-city.png)
 
 
 ## Getting Started
