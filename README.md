@@ -20,24 +20,9 @@ Track City is a versatile application designed to help users track various aspec
 
 To get started with Track City, follow these steps:
 
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/your-username/track-city.git
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   cd track-city
-   npm install
-   ```
-
-3. Run the development server:
-
-   ```bash
-   npm start
-   ```
+1. To contribute to Track City or review the repository locally, you can use git clone.
+2. Use npm install to ensure all dependencies are available
+3. Use npm run dev to view Track City locally
 
 ## Libraries
 
@@ -49,10 +34,6 @@ To get started with Track City, follow these steps:
 ## Deployment
 
 Track City is deployed on [Netlify](https://www.netlify.com/) and can be accessed [here](https://track-city.netlify.app/).
-
-## Contributors
-
-Meet the team behind Track City:
 
 
 ## License
