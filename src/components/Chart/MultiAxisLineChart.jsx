@@ -28,7 +28,9 @@ function MultiAxisLineChart({ visible, width, height, margin }) {
         pointsData.forEach(data => {
             const date = new Date(data.startDate);
             const dayOfWeek = date.getDay(); // Get day of the week (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
-            accumulatedPoints[item.title][dayOfWeek] += data.points; // Accumulate points for the corresponding day of the week
+            // Adjust index to match the labels starting from Monday
+            const adjustedIndex = (dayOfWeek + 6) % 7;
+            accumulatedPoints[item.title][adjustedIndex] += data.points; // Accumulate points for the corresponding day of the week
         });
     });
 
