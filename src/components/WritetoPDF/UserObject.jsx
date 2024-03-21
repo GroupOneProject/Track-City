@@ -83,7 +83,7 @@ function DownloadTasks() {
         html2canvas(pdfContainer).then(canvas => {
             const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF();
-            pdf.addImage(imgData, 'PNG', 10, 10);
+            pdf.addImage(imgData, 'PNG', 0, 0);
             pdf.save(`${selectedName} tasks.pdf`);
             document.body.removeChild(pdfContainer); 
         });

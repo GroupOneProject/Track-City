@@ -6,15 +6,14 @@ body {
 
 .pdf {
     max-width: 725px;
-    height: 100%;
     font-size: 1rem;
-    border: 4px double #89CFF0;
+    border: 5px double #b1beee;
     padding: 10px;
     
 }
 
 .pdf-text {
-    font-size: 1rem;
+    font-size: 0.5rem;
     font-weight: 200;
  
 }
@@ -43,7 +42,7 @@ margin: 15px auto;
 
 p {
     font-weight: bolder;
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 h4 {
